@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Prediction History</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f5f7fb;
+padding:20px;
+}
+
+h1{
+text-align:center;
+color:#2563eb;
+}
+
+.card{
+background:white;
+padding:15px;
+margin:15px auto;
+max-width:700px;
+border-radius:15px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.disease{
+font-size:20px;
+font-weight:bold;
+color:#2563eb;
+}
+
+.confidence{
+color:green;
+font-weight:bold;
+}
+
+.date{
+color:gray;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>📜 Prediction History</h1>
+
+{% for row in history %}
+
+<div class="card">
+
+<div class="disease">
+{{ row.disease }}
+</div>
+
+<p class="confidence">
+Confidence: {{ row.confidence }}%
+</p>
+
+<p>
+Image: {{ row.image_name }}
+</p>
+
+<p class="date">
+{{ row.created_at }}
+</p>
+
+</div>
+
+{% endfor %}
+
+</body>
+</html>

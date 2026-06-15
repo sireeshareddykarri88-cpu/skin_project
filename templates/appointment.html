@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Book Appointment</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f7fc;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.container{
+background:white;
+padding:30px;
+width:400px;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+h1{
+text-align:center;
+margin-bottom:20px;
+color:#0077ff;
+}
+
+input,select{
+width:100%;
+padding:12px;
+margin-bottom:15px;
+border:1px solid #ddd;
+border-radius:10px;
+}
+
+button{
+width:100%;
+padding:12px;
+border:none;
+background:#0077ff;
+color:white;
+border-radius:10px;
+font-size:16px;
+cursor:pointer;
+}
+
+.success{
+margin-top:15px;
+padding:10px;
+background:#d4edda;
+color:#155724;
+border-radius:10px;
+text-align:center;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📅 Book Appointment</h1>
+
+<form method="POST">
+
+<input
+type="text"
+name="name"
+placeholder="Your Name"
+required>
+
+<input
+type="email"
+name="email"
+placeholder="Your Email"
+required>
+
+<select name="doctor" required>
+
+<option value="">
+Select Doctor
+</option>
+
+<option>
+Dr. Priya Sharma
+</option>
+
+<option>
+Dr. Rahul Verma
+</option>
+
+<option>
+Dr. Anjali Reddy
+</option>
+
+</select>
+
+<input
+type="date"
+name="appointment_date"
+required>
+
+<button type="submit">
+Book Appointment
+</button>
+
+</form>
+
+{% if success %}
+<div class="success">
+✅ Appointment Booked Successfully
+</div>
+{% endif %}
+
+</div>
+
+</body>
+</html>

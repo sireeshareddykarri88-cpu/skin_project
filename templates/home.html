@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>SkinCare AI Hospital</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f5f0ff;
+}
+
+/* NAVBAR */
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 40px;
+background:white;
+box-shadow:0 4px 15px rgba(0,0,0,.08);
+position:sticky;
+top:0;
+z-index:999;
+}
+
+.logo{
+font-size:30px;
+font-weight:700;
+color:#7c3aed;
+}
+
+.profile-btn{
+background:linear-gradient(135deg,#7c3aed,#c084fc);
+color:white;
+padding:12px 24px;
+border-radius:50px;
+cursor:pointer;
+font-weight:600;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+transition:.3s;
+}
+
+.profile-btn:hover{
+transform:translateY(-3px);
+}
+
+/* PROFILE PANEL */
+
+.profile-panel{
+position:fixed;
+top:90px;
+right:20px;
+width:280px;
+background:white;
+padding:20px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+display:none;
+z-index:1000;
+}
+
+.profile-panel.show{
+display:block;
+}
+
+.profile-panel p{
+margin:8px 0;
+}
+
+.menu-btn{
+display:block;
+text-decoration:none;
+background:#7c3aed;
+color:white;
+padding:12px;
+text-align:center;
+border-radius:10px;
+margin-top:10px;
+font-weight:600;
+transition:.3s;
+}
+
+.menu-btn:hover{
+background:#6d28d9;
+}
+
+.logout{
+background:#dc3545;
+}
+
+/* HERO */
+
+.hero{
+padding:100px 20px;
+text-align:center;
+background:
+linear-gradient(rgba(124,58,237,.88),
+rgba(192,132,252,.88)),
+url("https://images.unsplash.com/photo-1584515933487-779824d29309");
+background-size:cover;
+background-position:center;
+color:white;
+}
+
+.hero h1{
+font-size:55px;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:22px;
+margin-bottom:30px;
+}
+
+.start-btn{
+display:inline-block;
+padding:16px 40px;
+background:white;
+color:#7c3aed;
+font-weight:700;
+text-decoration:none;
+border-radius:50px;
+transition:.3s;
+}
+
+.start-btn:hover{
+transform:translateY(-4px);
+}
+
+/* ACTION BUTTONS */
+
+.action-buttons{
+margin-top:40px;
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:15px;
+}
+
+.action-btn{
+background:white;
+color:#7c3aed;
+text-decoration:none;
+padding:14px 25px;
+border-radius:30px;
+font-weight:600;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+transition:.3s;
+}
+
+.action-btn:hover{
+transform:translateY(-4px);
+}
+
+/* SERVICES */
+
+.services{
+padding:80px 20px;
+text-align:center;
+}
+
+.services h2{
+font-size:40px;
+margin-bottom:50px;
+color:#7c3aed;
+}
+
+.cards{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:25px;
+}
+
+.card{
+background:white;
+width:300px;
+padding:30px;
+border-radius:20px;
+box-shadow:0 8px 20px rgba(124,58,237,.15);
+border-top:5px solid #7c3aed;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 12px 30px rgba(124,58,237,.25);
+}
+
+.card h3{
+margin:15px 0;
+color:#7c3aed;
+}
+
+/* STATS */
+
+.stats{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:30px;
+padding:50px 20px;
+background:#f3e8ff;
+}
+
+.stat{
+text-align:center;
+}
+
+.stat h1{
+color:#7c3aed;
+font-size:45px;
+}
+
+.stat p{
+font-weight:600;
+}
+
+/* FOOTER */
+
+.footer{
+background:#6d28d9;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:38px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+.navbar{
+padding:15px;
+}
+
+.profile-panel{
+width:90%;
+right:5%;
+}
+
+.cards{
+flex-direction:column;
+align-items:center;
+}
+
+.card{
+width:90%;
+}
+}
+.location-bar{
+background:#ede9fe;
+padding:12px;
+text-align:center;
+font-weight:600;
+color:#6d28d9;
+border-bottom:1px solid #ddd;
+}
+.location-bar{
+text-align:center;
+padding:15px;
+font-size:18px;
+font-weight:600;
+background:#f3e8ff;
+color:#6d28d9;
+}
+
+.nearby-section{
+max-width:900px;
+margin:30px auto;
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.nearby-section h3{
+color:#7c3aed;
+margin-top:15px;
+margin-bottom:10px;
+}
+
+.nearby-section ul{
+list-style:none;
+padding:0;
+}
+
+.nearby-section li{
+padding:10px;
+background:#f9f5ff;
+margin-bottom:8px;
+border-radius:10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+<div class="logo">
+🏥 SkinCare AI
+</div>
+
+<div class="profile-btn" onclick="toggleProfile()">
+👤 {{ name if name else "Profile" }}
+</div>
+
+</div>
+<div class="location-bar">
+    📍 <span id="location">Detecting location...</span>
+</div>
+<div class="nearby-section">
+
+    <h3>🏥 Nearby Hospitals</h3>
+    <ul id="hospitalList">
+        <li>Loading hospitals...</li>
+    </ul>
+
+    <h3>👨‍⚕️ Nearby Dermatologists</h3>
+    <ul id="doctorList">
+        <li>Loading dermatologists...</li>
+    </ul>
+
+</div>
+<!-- PROFILE PANEL -->
+
+<div id="profilePanel" class="profile-panel">
+
+{% if name %}
+
+<h3>👤 {{ name }}</h3>
+
+<hr><br>
+
+<p><b>Email:</b> {{ email }}</p>
+
+<p><b>Mobile:</b> {{ mobile }}</p>
+
+<a href="/diagnosis" class="menu-btn">
+🩺 AI Diagnosis
+</a>
+
+<a href="/dashboard" class="menu-btn">
+📊 Dashboard
+</a>
+
+<a href="/history" class="menu-btn">
+📜 History
+</a>
+
+<a href="/appointment" class="menu-btn">
+📅 Appointment
+</a>
+
+<a href="/logout" class="menu-btn logout">
+🚪 Logout
+</a>
+
+{% else %}
+
+<h3>👋 Welcome</h3>
+
+<hr><br>
+
+<a href="/signup" class="menu-btn">
+📝 Sign Up
+</a>
+
+<a href="/login" class="menu-btn">
+🔐 Login
+</a>
+
+{% endif %}
+
+</div>
+
+<!-- HERO -->
+
+<div class="hero">
+
+<h1>AI Powered Skin Hospital</h1>
+
+<p>
+Advanced Artificial Intelligence for Early Skin Disease Detection
+</p>
+
+<a href="/diagnosis" class="start-btn">
+🚀 Start AI Diagnosis
+</a>
+
+<div class="action-buttons">
+
+<a href="/doctors" class="action-btn">
+👨‍⚕️ Doctors
+</a>
+
+<a href="/appointment" class="action-btn">
+📅 Appointment
+</a>
+
+<a href="/dashboard" class="action-btn">
+📊 Dashboard
+</a>
+
+<a href="/history" class="action-btn">
+📜 History
+</a>
+
+</div>
+
+</div>
+
+<!-- SERVICES -->
+
+<div class="services">
+
+<h2>Our Services</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>🧠 AI Diagnosis</h3>
+<p>Upload skin images and receive instant AI-powered disease predictions.</p>
+</div>
+
+<div class="card">
+<h3>👨‍⚕️ Expert Dermatologists</h3>
+<p>Consult experienced skin specialists and get professional guidance.</p>
+</div>
+
+<div class="card">
+<h3>📄 Smart Reports</h3>
+<p>Generate and download diagnosis reports securely anytime.</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- STATS -->
+
+<div class="stats">
+
+<div class="stat">
+<h1>10+</h1>
+<p>Skin Diseases</p>
+</div>
+
+<div class="stat">
+<h1>95%</h1>
+<p>AI Accuracy</p>
+</div>
+
+<div class="stat">
+<h1>24/7</h1>
+<p>Support</p>
+</div>
+
+</div>
+
+<!-- FOOTER -->
+
+<div class="footer">
+© 2026 SkinCare AI Hospital | All Rights Reserved
+</div>
+
+<script>
+
+// PROFILE PANEL
+
+function toggleProfile() {
+    document.getElementById("profilePanel")
+        .classList.toggle("show");
+}
+
+document.addEventListener("click", function(event) {
+
+    const panel = document.getElementById("profilePanel");
+    const button = document.querySelector(".profile-btn");
+
+    if (
+        panel &&
+        !panel.contains(event.target) &&
+        !button.contains(event.target)
+    ) {
+        panel.classList.remove("show");
+    }
+
+});
+
+// LOCATION + HOSPITALS + DOCTORS
+
+function getLocation() {
+
+    if (!navigator.geolocation) {
+
+        document.getElementById("location").innerHTML =
+            "Geolocation Not Supported";
+
+        return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+
+        async function(position) {
+
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+
+            try {
+
+                // GET CITY NAME
+
+                const locationResponse = await fetch(
+                    `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&accept-language=en`
+                );
+
+                const locationData =
+                    await locationResponse.json();
+
+                let city =
+                    locationData.address.city ||
+                    locationData.address.town ||
+                    locationData.address.village ||
+                    locationData.address.county ||
+                    "Unknown";
+
+                let state =
+                    locationData.address.state || "";
+
+                document.getElementById("location").innerHTML =
+                    `${city}, ${state}`;
+
+            } catch (err) {
+
+                document.getElementById("location").innerHTML =
+                    "Location unavailable";
+            }
+
+            // HOSPITALS
+
+            try {
+
+                const hospitalQuery = `
+[out:json];
+(
+node["amenity"="hospital"](around:5000,${lat},${lon});
+way["amenity"="hospital"](around:5000,${lat},${lon});
+relation["amenity"="hospital"](around:5000,${lat},${lon});
+);
+out center;
+`;
+
+                const hospitalRes = await fetch(
+                    "https://overpass-api.de/api/interpreter",
+                    {
+                        method: "POST",
+                        body: hospitalQuery
+                    }
+                );
+
+                const hospitalData =
+                    await hospitalRes.json();
+
+                let hospitalHTML = "";
+
+                if (
+                    hospitalData.elements &&
+                    hospitalData.elements.length > 0
+                ) {
+
+                    hospitalData.elements
+                        .slice(0, 5)
+                        .forEach(hospital => {
+
+                        hospitalHTML += `
+<li>
+🏥 ${hospital.tags?.name || "Hospital"}
+<br>
+<a href="https://www.google.com/maps/search/?api=1&query=${hospital.lat},${hospital.lon}"
+target="_blank"
+style="color:#7c3aed;font-weight:600;">
+🗺️ Navigate
+</a>
+</li>`;   
+                        });
+
+                } else {
+
+                    hospitalHTML =
+                        "<li>No hospitals found nearby</li>";
+                }
+
+                document.getElementById(
+                    "hospitalList"
+                ).innerHTML = hospitalHTML;
+
+            } catch (err) {
+
+                document.getElementById(
+                    "hospitalList"
+                ).innerHTML =
+                    "<li>Unable to load hospitals</li>";
+            }
+
+            // DOCTORS
+
+            try {
+
+                const doctorQuery = `
+[out:json];
+(
+node["healthcare"="doctor"](around:5000,${lat},${lon});
+way["healthcare"="doctor"](around:5000,${lat},${lon});
+relation["healthcare"="doctor"](around:5000,${lat},${lon});
+);
+out center;
+`;
+
+                const doctorRes = await fetch(
+                    "https://overpass-api.de/api/interpreter",
+                    {
+                        method: "POST",
+                        body: doctorQuery
+                    }
+                );
+
+                const doctorData =
+                    await doctorRes.json();
+
+                let doctorHTML = "";
+
+                if (
+                    doctorData.elements &&
+                    doctorData.elements.length > 0
+                ) {
+
+                    doctorData.elements
+                        .slice(0, 5)
+                        .forEach(doc => {
+
+                            doctorHTML += `
+                            <li>
+                            👨‍⚕️ ${doc.tags?.name || "Doctor"}
+                            </li>`;
+                        });
+
+                } else {
+
+                    doctorHTML =
+                        "<li>No dermatologists found nearby</li>";
+                }
+
+                document.getElementById(
+                    "doctorList"
+                ).innerHTML = doctorHTML;
+
+            } catch (err) {
+
+                document.getElementById(
+                    "doctorList"
+                ).innerHTML =
+                    "<li>Unable to load doctors</li>";
+            }
+
+        },
+
+        function(error) {
+
+            document.getElementById("location").innerHTML =
+                "Location Permission Denied";
+
+            document.getElementById("hospitalList").innerHTML =
+                "<li>Location access required</li>";
+
+            document.getElementById("doctorList").innerHTML =
+                "<li>Location access required</li>";
+        }
+
+    );
+}
+
+getLocation();
+
+</script>
+
+</body>
+</html>

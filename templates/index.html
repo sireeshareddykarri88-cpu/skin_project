@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Skin Disease Detector</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#4facfe,#00f2fe);
+min-height:100vh;
+padding:20px;
+}
+
+.topbar{
+display:flex;
+justify-content:flex-end;
+margin-bottom:20px;
+}
+
+.profile-btn{
+background:white;
+padding:12px 18px;
+border-radius:50px;
+font-weight:600;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+cursor:pointer;
+}
+
+.container{
+max-width:700px;
+margin:auto;
+background:white;
+padding:30px;
+border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+.logo{
+font-size:60px;
+text-align:center;
+}
+
+h1{
+text-align:center;
+margin-top:10px;
+color:#1f2937;
+}
+
+.subtitle{
+text-align:center;
+color:#6b7280;
+margin-bottom:25px;
+}
+
+.upload-box{
+border:2px dashed #4facfe;
+padding:25px;
+border-radius:15px;
+background:#f8fbff;
+margin-bottom:20px;
+}
+
+input[type=file]{
+width:100%;
+padding:10px;
+}
+
+.predict-btn{
+width:100%;
+padding:15px;
+border:none;
+border-radius:12px;
+background:#4facfe;
+color:white;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+}
+
+.predict-btn:hover{
+background:#2196f3;
+}
+
+.preview img{
+width:100%;
+margin-top:20px;
+border-radius:15px;
+}
+
+.result-card{
+margin-top:20px;
+background:#f8fafc;
+padding:20px;
+border-radius:15px;
+border-left:5px solid #4facfe;
+}
+
+.disease{
+font-size:22px;
+font-weight:700;
+color:#2563eb;
+}
+
+.confidence{
+font-size:20px;
+font-weight:700;
+color:green;
+}
+
+.info{
+margin-top:15px;
+line-height:1.6;
+}
+
+.buttons{
+display:flex;
+gap:10px;
+margin-top:20px;
+}
+
+.btn{
+flex:1;
+text-decoration:none;
+text-align:center;
+padding:12px;
+background:#4facfe;
+color:white;
+border-radius:10px;
+font-weight:600;
+}
+
+.profile-panel{
+position:fixed;
+top:70px;
+right:20px;
+background:white;
+width:250px;
+padding:20px;
+border-radius:15px;
+box-shadow:0 10px 20px rgba(0,0,0,.15);
+display:none;
+}
+
+.profile-panel.show{
+display:block;
+}
+
+</style>
+</head>
+<body>
+
+<div class="topbar">
+
+<div class="profile-btn" onclick="toggleProfile()">
+👤 {{ name }}
+</div>
+
+</div>
+
+<div id="profilePanel" class="profile-panel">
+
+<h3>Profile</h3>
+
+<hr><br>
+
+<p><b>Name:</b> {{ name }}</p>
+
+<p><b>Email:</b> {{ email }}</p>
+
+<p><b>Mobile:</b> {{ mobile }}</p>
+
+<br>
+
+<a href="/history" class="btn">📜 History</a>
+
+<br><br>
+
+<a href="/logout" class="btn">🚪 Logout</a>
+
+</div>
+
+<div class="container">
+
+<div class="logo">🩺</div>
+
+<h1>AI Skin Disease Detector</h1>
+
+<p class="subtitle">
+Upload a skin image and get AI prediction
+</p>
+
+<form action="/predict" method="POST" enctype="multipart/form-data">
+
+<div class="upload-box">
+<input type="file" name="image" required>
+</div>
+
+<button class="predict-btn">
+🔍 Detect Disease
+</button>
+
+</form>
+
+{% if disease %}
+
+<div class="preview">
+<img src="{{ image }}">
+</div>
+
+<div class="result-card">
+
+<h2>Prediction Result</h2>
+
+<p>
+Disease:
+<br>
+<span class="disease">
+{{ disease }}
+</span>
+</p>
+
+<p>
+Confidence:
+<br>
+<span class="confidence">
+{{ confidence }}%
+</span>
+</p>
+
+<div class="info">
+
+<h3>📖 Disease Information</h3>
+
+<p>{{ info }}</p>
+
+</div>
+
+</div>
+
+{% endif %}
+
+</div>
+
+<script>
+
+function toggleProfile(){
+document.getElementById("profilePanel")
+.classList.toggle("show");
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Patient Dashboard</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+body{
+font-family:Arial,sans-serif;
+background:#f4f7fc;
+margin:0;
+}
+
+.header{
+background:#0077ff;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+.container{
+padding:20px;
+max-width:1200px;
+margin:auto;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+margin-top:20px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+text-align:center;
+}
+
+.card h2{
+color:#0077ff;
+}
+
+.table-box{
+background:white;
+padding:20px;
+margin-top:20px;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+overflow-x:auto;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th,td{
+padding:12px;
+border-bottom:1px solid #ddd;
+text-align:left;
+}
+
+th{
+background:#0077ff;
+color:white;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+<h1>👤 Patient Dashboard</h1>
+</div>
+
+<div class="container">
+
+<div class="cards">
+
+<div class="card">
+<h2>{{ user_name }}</h2>
+<p>User Name</p>
+</div>
+
+<div class="card">
+<h2>{{ total_predictions }}</h2>
+<p>Total Predictions</p>
+</div>
+
+<div class="card">
+<h2>{{ total_appointments }}</h2>
+<p>Appointments</p>
+</div>
+
+</div>
+
+<div class="table-box">
+
+<h2>📄 Prediction History</h2>
+
+<table>
+
+<tr>
+<th>Disease</th>
+<th>Confidence</th>
+</tr>
+
+{% for item in predictions %}
+
+<tr>
+<td>{{ item.disease }}</td>
+<td>{{ item.confidence }}%</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+<div class="table-box">
+
+<h2>📅 Appointments</h2>
+
+<table>
+
+<tr>
+<th>Doctor</th>
+<th>Date</th>
+</tr>
+
+{% for item in appointments %}
+
+<tr>
+<td>{{ item.doctor }}</td>
+<td>{{ item.appointment_date }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+</body>
+</html>
